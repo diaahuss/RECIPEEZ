@@ -1,40 +1,55 @@
 function login() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+
     if (email && password) {
-        showPage('welcome-page');
+        document.getElementById('login-page').style.display = 'none';
+        document.getElementById('welcome-page').style.display = 'block';
     } else {
         alert('Please enter both email and password.');
     }
 }
 
 function logout() {
-    document.getElementById('email').value = '';
-    document.getElementById('password').value = '';
-    showPage('login-page');
+    document.getElementById('login-page').style.display = 'block';
+    document.getElementById('welcome-page').style.display = 'none';
+    document.getElementById('upload-recipe-page').style.display = 'none';
+    document.getElementById('retrieve-recipe-page').style.display = 'none';
+    document.getElementById('invite-page').style.display = 'none';
 }
 
-function showPage(pageId) {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.style.display = 'none');
-    document.getElementById(pageId).style.display = 'block';
+function showUploadPage() {
+    document.getElementById('welcome-page').style.display = 'none';
+    document.getElementById('upload-recipe-page').style.display = 'block';
+}
+
+function showRetrievePage() {
+    document.getElementById('welcome-page').style.display = 'none';
+    document.getElementById('retrieve-recipe-page').style.display = 'block';
+}
+
+function showInvitePage() {
+    document.getElementById('welcome-page').style.display = 'none';
+    document.getElementById('invite-page').style.display = 'block';
+}
+
+function goBack() {
+    document.getElementById('upload-recipe-page').style.display = 'none';
+    document.getElementById('retrieve-recipe-page').style.display = 'none';
+    document.getElementById('invite-page').style.display = 'none';
+    document.getElementById('welcome-page').style.display = 'block';
 }
 
 function saveRecipe() {
-    alert('Recipe saved!');
-    showPage('welcome-page');
+    alert('Recipe saved successfully!');
+    goBack();
 }
 
 function searchRecipe() {
-    alert('Searching for recipes...');
+    alert('Search functionality coming soon!');
 }
 
 function sendInvite() {
-    const email = document.getElementById('invite-email').value;
-    if (email) {
-        alert(`Invitation sent to ${email}`);
-    } else {
-        alert('Please enter an email address.');
-    }
+    alert('Invite sent successfully!');
+    goBack();
 }
-
